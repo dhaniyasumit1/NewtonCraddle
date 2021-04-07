@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <title>Newton Cradle Effect</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        :root{
+            --container-bg: hsl(204, 64%, 94%);
+            --main-bg: #2980b9;
+            --bg: 71,81,82;
+            --main-boxshadow: 0 1.4rem 2.8rem rgba(0,0,0,0.25),
+            0 1rem 1rem rgba(0,0,0,0.22);
+            --ballhadow: 0 1.4rem 2.8rem rgba(0,0,0,0.25),
+            0 1rem 1rem rgba(0,0,0,0.22);
+        }
+
+        html {
+            font-size: 62.5%;
+        }
+
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--container-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main {
+            width: 60%;
+            height: 60%;
+            border: 0.5rem solid var(--main-bg);
+            border-bottom-width: 5rem;
+            box-shadow: var(--main-boxshadow);
+            display: flex;
+            justify-content: center;
+        }
+
+        span{
+            width: 0.5rem;
+            height: 70%;
+            background-color: rgba(var(--bg), 0.7);
+            display: block;
+            margin: 0 2.75rem;
+            position: relative;
+            /* apply the transform property from top, by default it apply from the center */
+            transform-origin: top;
+        }
+
+        span::before{
+            content: "";
+            width: 6rem;
+            height: 6rem;
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(var(--bg), 1);
+            bottom: 0; /* move the balls bottom */
+            transform: translate(-50%);
+            box-shadow: var(--main-boxshadow);
+        }
+
+        span:first-child{
+            animation: leftball 2s linear infinite;
+        }
+
+        @keyframes leftball {
+            0%{
+                transform: rotate(0deg);
+            }
+            20%{
+                transform: rotate(50deg);
+            }
+            50%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(0deg);
+            }
+        }
+
+        span:last-child{
+            animation: rightball 2s linear 1s infinite;
+        }
+
+        @keyframes rightball {
+            0%{
+                transform: rotate(0deg);
+            }
+            20%{
+                transform: rotate(-50deg);
+            }
+            50%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</body>
+
+</html>
